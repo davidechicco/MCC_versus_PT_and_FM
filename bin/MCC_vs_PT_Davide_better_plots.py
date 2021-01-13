@@ -53,15 +53,29 @@ FP = np.array(FP)
 # In[ ]:
 MCC_upper = TP * TN - FP * FN
 MCC_lower = np.sqrt((TP +FP) * (TP + FN) * (TN + FP) * (TN +FN))
-MCC = MCC_upper / MCC_lower
+# MCC = MCC_upper / MCC_lower
+
+MCC=np.zeros_like(MCC_upper)
+for i in range(len(MCC_upper)):
+    if(MCC_lower[i]!=0):
+        MCC[i]=MCC_upper[i]/MCC_lower[i]
+
 
 normMCC = (MCC + 1) / 2
 
 # prevalence threshold
 TPR = TP / (TP + FN)
 TNR = TN / (TN + FP)
-PT = (np.sqrt(TPR * (-TNR +1)) + TNR - 1)  / (TPR + TNR - 1)
+# PT = (np.sqrt(TPR * (-TNR +1)) + TNR - 1)  / (TPR + TNR - 1)
 
+
+PT_upper = (np.sqrt(TPR * (-TNR +1)) + TNR - 1)  
+PT_lower = (TPR + TNR - 1)
+PT=np.zeros_like(PT_upper)
+
+for i in range(len(PT_upper)):
+    if(PT_lower[i]!=0):
+        PT[i]=PT_upper[i]/PT_lower[i]
 
 
 complPT = (1 - PT)
