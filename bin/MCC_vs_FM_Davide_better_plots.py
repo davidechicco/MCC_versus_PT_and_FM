@@ -2,7 +2,7 @@
 #
 
 # coding: utf-8
-# # Compare MCC to prevalence threshold
+# # Compare MCC to Fowlkes-Mallows index
 # import packages
 # In[ ]:
 
@@ -18,7 +18,7 @@ from random import seed
 from random import randint
 # seed(11)
 
-# Generate confusion matrices by varying TPR, TNR and prevalence
+# Generate confusion matrices by varying TPR, TNR and Fowlkes-Mallows index
 # In[ ]:
 stepsize = 0.01 # 0.01
 vals = np.arange(0, 1 + stepsize, stepsize)
@@ -66,26 +66,30 @@ normMCC = (MCC + 1) / 2
 # prevalence threshold
 TPR = TP / (TP + FN)
 TNR = TN / (TN + FP)
+PPV = TP / (TP + FP)
 # PT = (np.sqrt(TPR * (-TNR +1)) + TNR - 1)  / (TPR + TNR - 1)
 
+FMI = np.sqrt(TPR * PPV)
 
-PT_upper = (np.sqrt(TPR * (-TNR +1)) + TNR - 1)  
-PT_lower = (TPR + TNR - 1)
-PT=np.zeros_like(PT_upper)
+#PT_upper = (np.sqrt(TPR * (-TNR +1)) + TNR - 1)  
+#PT_lower = (TPR + TNR - 1)
+#PT=np.zeros_like(PT_upper)
 
-for i in range(len(PT_upper)):
-    if(PT_lower[i]!=0):
-        PT[i]=PT_upper[i]/PT_lower[i]
+#for i in range(len(PT_upper)):
+    #if(PT_lower[i]!=0):
+        #PT[i]=PT_upper[i]/PT_lower[i]
 
 
-complPT = (1 - PT)
+#complPT = (1 - PT)
  
 # plotting
 
-lengthComplPT = len(complPT)
+#lengthComplPT = len(complPT)
 lengthNormMCC = len(normMCC)
 
-print("lengthComplPT = ", lengthComplPT, "\n")
+lengthFMI = len(FMI)
+
+print("lengthFMI = ", lengthFMI, "\n")
 print("lengthNormMCC = ", lengthNormMCC, "\n")
 
 
@@ -101,9 +105,9 @@ plt.rcParams['axes.axisbelow'] = True
 
 plt.rcParams['axes.facecolor'] = 'whitesmoke'
 plt.grid(color='white')
-plt.scatter(normMCC, complPT, s=mySize, c=myColor)
+plt.scatter(normMCC, FMI, s=mySize, c=myColor)
 plt.xlabel('normalized Matthews correlation coefficient (normMCC)')
-plt.ylabel('complementary prevalence threshold (complPT)')
+plt.ylabel('Fowlkes-Mallows index')
 
 
 
@@ -111,7 +115,7 @@ plt.ylabel('complementary prevalence threshold (complPT)')
 
 value = randint(1, 1000)
 
-fileName = '../results/normMCC_vs_complPT_python_rand'+str(value)+'.png' 
+fileName = '../results/normMCC_vs_FMI_python_rand'+str(value)+'.png' 
 
 print("saved file: ", fileName, "\n")
 plt.savefig(fileName)
