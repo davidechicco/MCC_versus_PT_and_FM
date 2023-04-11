@@ -6,6 +6,5 @@ To execute the R scripts that generate the results on the use cases described in
 
 `Rscript MCC_PT_use_cases_computation.r`
 
-
 ## Contacts
-The author Davide Chicco can be contacted at the email address davidechicco(AT)davidechicco.it
+The author [Davide Chicco](https://www.DavideChicco.it) can be contacted at the email address davidechicco(AT)davidechicco.it
