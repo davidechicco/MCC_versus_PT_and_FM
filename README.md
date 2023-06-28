@@ -9,7 +9,7 @@ To execute the R scripts that generate the results on the use cases described in
 ## Article
 More information about this study can be found in the following article:
 
-> Davide Chicco, and Giuseppe Jurman, "[A statistical comparison between Matthews correlation coefficient (MCC), prevalence threshold, and Fowlkes–Mallows index](https://doi.org/10.1016/j.jbi.2023.104426)", _Journal of Biomedical Informatics_ 144, 104426 (August 2023).
+> Davide Chicco, and Giuseppe Jurman, "[A statistical comparison between Matthews correlation coefficient (MCC), prevalence threshold, and Fowlkes–Mallows index](https://doi.org/10.1016/j.jbi.2023.104426)", _Journal of Biomedical Informatics_ 144(104426), pages 1-7, 2023.
 
 ## Contacts
 The author [Davide Chicco](https://www.DavideChicco.it) can be contacted at the email address davidechicco(AT)davidechicco.it
